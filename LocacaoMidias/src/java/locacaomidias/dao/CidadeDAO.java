@@ -96,6 +96,8 @@ public class CidadeDAO extends DAO<Cidade> {
             estado.setId( rs.getLong( "idEstado" ) );
             estado.setNome( rs.getString( "nomeEstado" ) );
             estado.setSigla( rs.getString( "siglaEstado" ) );
+            
+            cidades.add( cidade );
         }
         
         stmt.close();
