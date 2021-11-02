@@ -10,14 +10,26 @@ and open the template in the editor.
 
 /* Estilos gerais */
 body{
-    background-color: #667a8c;
+    /* background-color: #667a8c; */
+    background-color: rgba(0, 0, 0, .87);
 }
 
 body h1{
-    color: #222528;
+    /* color: #222528; */
+    color: #541b19;
     text-align: center;
+    animation-name: tituloPiscando;
+    animation-duration: .4s;
+    animation-iteration-count: infinite;
     font-family: cursive;
     border-bottom: 1px solid lightgray;
+}
+
+@keyframes tituloPiscando {
+    0% { color: rgba(238, 147, 144, .2) }
+    25% { color: rgba(238, 147, 144, .4) }
+    50% { color: rgba(238, 147, 144, .6) }
+    75% { color: rgba(238, 147, 144, .8) }
 }
 
 body p{
@@ -25,19 +37,21 @@ body p{
 }
 
 a {
-    color: black;
+    color: #541b19;
     text-decoration: none;
     font-weight: bold;
 }
 
 a:hover {
-    color: white;
+    color: rgb(110, 36, 34);
     text-decoration: underline;
 }
 
 .tabelaListagem {
     background: #000000;
     align-content: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .tabelaListagem th {
@@ -47,10 +61,16 @@ a:hover {
 
 .tabelaListagem td{
     background-color: darkgray;
+    text-align: center;
 }
 
-.alinharDireita {
-    text-align: right;
+.tabelaInserir {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tabelaInserir td{
+    color: rgb(174, 148, 147);
 }
 
 #divErros {
@@ -60,6 +80,17 @@ a:hover {
     background-color: #ff3333;
     padding: 10px;
     margin-bottom: 10px;
+}
+
+/* Botões */
+.btn-redondo {
+    font-family: cursive;
+    font-weight: bold;
+}
+
+.btn-redondo:hover {
+    border-radius: 10px;
+    background-color: lightgray;
 }
 
 /* Animação

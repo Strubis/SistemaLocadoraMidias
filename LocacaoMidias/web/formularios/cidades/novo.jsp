@@ -21,9 +21,9 @@
 
       <input name="acao" type="hidden" value="inserir"/>
 
-      <table>
+      <table class="tabelaInserir">
         <tr>
-          <td class="alinharDireita">Nome:</td>
+          <td>Nome:</td>
           <td>
             <input name="nome"
                    type="text"
@@ -33,7 +33,7 @@
           </td>
         </tr>
         <tr>
-          <td class="alinharDireita">Estado:</td>
+          <td>Estado:</td>
           <td>
 
             <jsp:useBean 
@@ -55,8 +55,8 @@
           <td>
             <a href="${cp}/formularios/cidades/listagem.jsp">Voltar</a>
           </td>
-          <td class="alinharDireita">
-            <input type="submit" value="Salvar"/>
+          <td>
+            <input class="btn-redondo" type="submit" value="Salvar"/>
           </td>
         </tr>
       </table>

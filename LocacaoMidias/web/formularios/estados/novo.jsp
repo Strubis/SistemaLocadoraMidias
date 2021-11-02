@@ -4,58 +4,58 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <title>Novo Estado</title>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"
-          href="${cp}/css/estilos.css"/>
-  </head>
+    <head>
+        <title>Novo Estado</title>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet"
+              href="${cp}/css/estilos.css"/>
+    </head>
 
-  <body>
+    <body>
 
-    <h1>Novo Estado</h1>
+        <h1>Novo Estado</h1>
 
-    <form method="post" action="${cp}/processaEstados">
+        <form method="post" action="${cp}/processaEstados">
 
-      <input name="acao" type="hidden" value="inserir"/>
+            <input name="acao" type="hidden" value="inserir"/>
 
-      <table>
-        <tr>
-          <td class="alinharDireita">Nome:</td>
-          <td>
-            <input name="nome"
-                   type="text"
-                   size="20"
-                   maxlength="30"
-                   required/>
-          </td>
-        </tr>
-        <tr>
-          <td class="alinharDireita">Sigla:</td>
-          <td>
-            <input name="sigla"
-                   type="text"
-                   size="3"
-                   maxlength="2"
-                   required/>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <a href="${cp}/formularios/estados/listagem.jsp">
-              Voltar
-            </a>
-          </td>
-          <td class="alinharDireita">
-            <input type="submit" value="Salvar"/>
-          </td>
-        </tr>
-      </table>
+            <table class="tabelaInserir">
+                <tr>
+                    <td>Nome:</td>
+                    <td>
+                        <input name="nome"
+                               type="text"
+                               size="20"
+                               maxlength="30"
+                               required/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sigla:</td>
+                    <td>
+                        <input name="sigla"
+                               type="text"
+                               size="3"
+                               maxlength="2"
+                               required/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="${cp}/formularios/estados/listagem.jsp">
+                            Voltar
+                        </a>
+                    </td>
+                    <td>
+                        <input class="btn-redondo" type="submit" value="Salvar"/>
+                    </td>
+                </tr>
+            </table>
 
-    </form>
+        </form>
 
-  </body>
+    </body>
 
 </html>

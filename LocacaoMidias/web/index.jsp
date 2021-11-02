@@ -38,6 +38,30 @@
                 Clientes
             </a>
         </p>
+        
+        <p>
+            <a href="${cp}/formularios/ator/listagem.jsp">
+                Atores
+            </a>
+        </p>
+        
+        <p>
+            <a href="${cp}/formularios/genero/listagem.jsp">
+                Gêneros
+            </a>
+        </p>
+        
+        <p>
+            <a href="${cp}/formularios/classificacaoEtaria/listagem.jsp">
+                Classificações Etárias
+            </a>
+        </p>
+        
+        <p>
+            <a href="${cp}/formularios/classificacaoInterna/listagem.jsp">
+                Classificações Internas
+            </a>
+        </p>
 
         <!-- Teste para animação
         <div id="animacao">
