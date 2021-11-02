@@ -217,7 +217,7 @@ public class ExemplarDAO extends DAO<Exemplar>{
                         + "m.classificacao_etaria_id = ce.id AND "
                         + "m.classificacao_interna_id = ci.id AND "
                         + "m.tipo_id = t.id AND "
-                        + "e.id = ?;" );
+                        + "e.codigo_interno = ?;" );
         stmt.setLong( 1, id );
         
         ResultSet rs = stmt.executeQuery();

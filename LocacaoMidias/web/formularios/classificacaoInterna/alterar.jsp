@@ -5,6 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Alterar Classiicação Interna</title>
         <link rel="stylesheet" href="${cp}/css/estilos.css" />
     </head>
@@ -19,7 +20,8 @@
                 <tr>
                     <td>Descrição:</td>
                     <td>
-                        <input name="descricao" type="text" size="30" maxlength="45" required />
+                        <input name="descricao" type="text" size="30" maxlength="45" 
+                               value="${requestScope.classInterna.descricao}" required />
                     </td>
                 </tr>
                 
@@ -27,7 +29,8 @@
                     <td>Valor do Aluguel:</td>
                     <td>
                         <input name="valorAluguel" size="8" type="number" 
-                               placeholder="R$ 9,99" step="0.01" min="0.1" required />
+                               placeholder="R$ 9,99" step="0.01" min="0.1" 
+                               value="${requestScope.classInterna.valorAluguel}" required />
                     </td>
                 </tr>
                 
