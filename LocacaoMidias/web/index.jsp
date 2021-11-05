@@ -66,6 +66,12 @@
                 Exemplares
             </a>
         </p>
+        
+        <p>
+            <a href="${cp}/formularios/tipo/listagem.jsp">
+                Tipos
+            </a>
+        </p>
 
         <!-- Teste para animação
         <div id="animacao">
