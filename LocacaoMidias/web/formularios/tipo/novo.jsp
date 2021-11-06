@@ -13,7 +13,7 @@
         <h1>Novo Tipo</h1>
         
         <form method="POST" action="${cp}/processaTipos">
-            <input type="hidden" name="acao" value="inserr" />
+            <input type="hidden" name="acao" value="inserir" />
             
             <table class="tabelaInserir">
                 <tr>

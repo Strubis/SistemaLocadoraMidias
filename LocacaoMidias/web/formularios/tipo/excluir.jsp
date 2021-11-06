@@ -11,5 +11,27 @@
     </head>
     <body>
         <h1>Excluir Tipo</h1>
+        
+        <form method="POST" action="${cp}/processaTipos">
+            <input name="acao" type="hidden" value="excluir" />
+            <input name="id" type="hidden" value="${requestScope.tipo.id}" />
+            
+            <table class="tabelaListagem">
+                <tr>
+                    <td>Descrição:</td>
+                    <td>${requestScope.tipo.descricao}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="${cp}/formularios/tipo/listagem.jsp">
+                            Voltar
+                        </a>
+                    </td>
+                    <td>
+                        <input class="btn-redondo" type="submit" value="Excluir" />
+                    </td>
+                </tr>
+            </table>
+        </form>
     </body>
 </html>

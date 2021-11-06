@@ -13,8 +13,8 @@
         <h1>Alterar Tipo</h1>
         
         <form method="POST" action="${cp}/processaTipos">
-            <input type="hiddden" name="id" value="${requestScope.tipo.id}"/>
-            <input type="hiddden" name="acao" value="alterar"/>
+            <input type="hidden" name="id" value="${requestScope.tipo.id}"/>
+            <input type="hidden" name="acao" value="alterar"/>
             
             <table class="tabelaInserir">
                 <tr>

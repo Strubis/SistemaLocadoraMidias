@@ -11,11 +11,11 @@
     </head>
     <body>
         <h1>Alterar Exemplar</h1>
-        
+
         <form method="POST" action="${cp}/processaExemplar">
             <input type="hidden" name="acao" value="alterar" />
             <input type="hidden" name="id" value="${requestScope.exemplar.codigoInterno}" />
-            
+
             <table class="tabelaInserir">
                 <tr>
                     <td>Mídia: </td>
@@ -24,9 +24,18 @@
                                      class="locacaomidias.servicos.MidiaServices" />
                         <select name="idMidia" required>
                             <c:forEach items="${servicos.todos}" var="midia">
-                                <option value="${midia.id}">
-                                    ${midia.titulo}
-                                </option>
+                                <c:choose>
+                                    <c:when test="${requestScope.exemplar.midia.id eq midia.id}">
+                                        <option value="${midia.id}" selected>
+                                            ${midia.titulo}
+                                        </option>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <option value="${midia.id}">
+                                            ${midia.titulo}
+                                        </option>
+                                    </c:otherwise>
+                                </c:choose>
                             </c:forEach>
                         </select>
                     </td>
