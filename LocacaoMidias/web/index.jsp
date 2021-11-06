@@ -72,6 +72,12 @@
                 Tipos
             </a>
         </p>
+        
+        <p>
+            <a href="${cp}/formularios/midia/listagem.jsp">
+                Mídias
+            </a>
+        </p>
 
         <!-- Teste para animação
         <div id="animacao">
