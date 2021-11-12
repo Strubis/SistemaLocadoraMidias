@@ -78,6 +78,12 @@
                 Mídias
             </a>
         </p>
+        
+        <p>
+            <a href="${cp}/formularios/locacao/listagem.jsp">
+                Locações
+            </a>
+        </p>
 
         <!-- Teste para animação
         <div id="animacao">

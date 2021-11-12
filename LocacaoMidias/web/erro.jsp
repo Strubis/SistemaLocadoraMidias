@@ -1,9 +1,3 @@
-<%-- 
-    Document   : erro
-    Created on : 30 de out. de 2021, 14:31:34
-    Author     : EmersonPC
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="cp" value="${pageContext.request.contextPath}"/>
