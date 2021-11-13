@@ -96,7 +96,7 @@ public class LocacaoDAO extends DAO<Locacao>{
               + "WHERE "
                         + "l.cliente_id = c.id AND "
                         + "c.cidade_id = ci.id AND "
-                        + "c.estado_id = e.id "
+                        + "ci.estado_id = e.id "
               + "ORDER BY l.cancelada, c.nome, ci.nome, e.nome;" )){
             
             ResultSet rs = stmt.executeQuery();

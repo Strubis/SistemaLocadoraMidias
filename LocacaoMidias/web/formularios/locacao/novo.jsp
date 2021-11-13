@@ -9,6 +9,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="${cp}/css/estilos.css" />
         <title>Nova Locação</title>
+        
+        <script src="${cp}/js/libs/jquery/jquery.min.js"></script>
+        <script src="${cp}/js/libs/decimal.js/decimal.min.js"></script>
+        <script src="${cp}/js/formularios/locacao/novo.js"></script>
     </head>
     <body>
         <h1>Nova Locação</h1>
@@ -16,104 +20,103 @@
         <form id="novaLocacao" method="POST" action="${cp}/processaLocacao">
 
             <input name="acao" type="hidden" value="inserir"/>
-            
-            <div id="divCliente">
-                <jsp:useBean 
-                    id="servicosC" 
-                    scope="page" 
-                    class="vendaprodutos.servicos.ClienteServices"/>
-
-                Cliente:
-                <br>
-                <select id="selectCliente" name="idCliente" required>
-                    <c:forEach items="${servicosC.todos}" var="cliente">
-                        <option value="${cliente.id}">
-                            ${cliente.nome} ${cliente.sobrenome}
-                        </option>
-                    </c:forEach>
-                </select>
-            </div>
 
             <div id="divItensVenda">
-                <table>
+                <table class="tabelaInserir">
                     <tr>
                         <td>
-
                             <jsp:useBean 
-                                id="servicosP" 
+                                id="servicosC" 
                                 scope="page" 
-                                class="vendaprodutos.servicos.ProdutoServices"/>
+                                class="locacaomidias.servicos.ClienteServices"/>
 
-                            <p>
-                                Produto:
-                                <br>
-                                <select id="selectProduto">
-                                    <c:forEach items="${servicosP.todos}" var="produto">
+                            Cliente:
+                            <select id="selectCliente" name="idCliente" required>
+                                <c:forEach items="${servicosC.todos}" var="cliente">
+                                    <option value="${cliente.id}">
+                                        ${cliente.nome} ${cliente.sobrenome}
+                                    </option>
+                                </c:forEach>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <jsp:useBean 
+                                id="servicosEx" 
+                                scope="page" 
+                                class="locacaomidias.servicos.ExemplarServices"/>
+                            Exemplar:
+                            <select id="selectExemplar">
+                                <c:forEach items="${servicosEx.todos}" var="exemplar">
+                                    <c:choose>
+                                        <c:when test="${exemplar.disponivel}">
+                                            <fmt:formatNumber
+                                                pattern="#.##"
+                                                minIntegerDigits="1"
+                                                minFractionDigits="2"
+                                                maxFractionDigits="2"
+                                                var="valorAluguel"
+                                                scope="page"
+                                                value="${exemplar.midia.idClassInterna.valorAluguel}"/>
 
-                                        <fmt:formatNumber
-                                            pattern="#.##"
-                                            minIntegerDigits="1"
-                                            minFractionDigits="2"
-                                            maxFractionDigits="2"
-                                            var="valorVenda"
-                                            scope="page"
-                                            value="${produto.valorVenda}"/>
-
-                                        <option value="${produto.id}"
-                                                data-valor="${valorVenda}"
-                                                data-descricao="${produto.descricao}">
-                                            ${produto.descricao}
-                                            (R$ ${valorVenda}
-                                            por
-                                            ${produto.unidadeMedida.sigla})
-                                        </option>
-                                    </c:forEach>
-                                </select>
-                            </p>
-
-                            <p>
-                                Quantidade:
-                                <br>
-                                <input id="txtQuantidade"
-                                       type="number"
-                                       size="3"
-                                       placeholder="9,99"
-                                       step="0.01"
-                                       min="0"/>
-                            </p>
-
+                                            <option value="${exemplar.codigoInterno}"
+                                                    data-valor="${valorAluguel}"
+                                                    data-titulo="${exemplar.midia.titulo}">
+                                                ${exemplar.midia.titulo}
+                                                - R$ ${valorAluguel}
+                                            </option>
+                                        </c:when>
+                                    </c:choose>
+                                </c:forEach>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Data da Devolução:
+                            <input id="dataDevolucao" name="dataFim"
+                                   type="date"
+                                   size="8"
+                                   placeholder="dd/mm/yyyy"
+                                   min="2021-11-12"
+                                   required />
                         </td>
                         <td class="btnsItensVenda">
-                            <p><input id="btnInserir" type="button" value="&#x2795;"></p>
-                            <p><input id="btnRemover" type="button" value="&#x2796;"></p>
-                            <p><input id="btnLimpar" type="button" value="&#x274C;"></p>
+                            <p>
+                                <input id="btnInserir" type="button" value="&#x2795;">
+                                <input id="btnRemover" type="button" value="&#x2796;">
+                                <input id="btnLimpar" type="button" value="&#x274C;">
+                            </p>
                         </td>
+                    </tr>
+                    <tr>
                         <td>
                             Itens da Venda:
                             <br>
-                            <select id="selectItensVenda" size="10" multiple>
+                            <select id="selectItensLocacao" size="10" multiple>
                             </select>
                             <br>
                             <div>
                                 <div id="divTotal">Total: R$ 0,00</div>
                             </div>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>
-                        </td>
-                        <td></td>
                         <td>
                             <input class="btn-redondo" type="submit" value="Salvar"/>
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                <a href="${cp}/formularios/locacao/listagem.jsp">
+                                    Voltar
+                                </a>
+                            </p>
+                        </td>
+                    </tr>
                 </table>
             </div>
-
-            <a href="${cp}/formularios/locacao/listagem.jsp">
-                Voltar
-            </a>
-
         </form>
+
     </body>
 </html>
