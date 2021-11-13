@@ -21,7 +21,7 @@
 
             <input name="acao" type="hidden" value="inserir"/>
 
-            <div id="divItensVenda">
+            <div id="divItensLocacao">
                 <table class="tabelaInserir">
                     <tr>
                         <td>
@@ -82,7 +82,7 @@
                                    min="2021-11-12"
                                    required />
                         </td>
-                        <td class="btnsItensVenda">
+                        <td class="btnsItensLocacao">
                             <p>
                                 <input id="btnInserir" type="button" value="&#x2795;">
                                 <input id="btnRemover" type="button" value="&#x2796;">

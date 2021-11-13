@@ -9,6 +9,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="${cp}/css/estilos.css" />
         <title>Locações</title>
+        
+        <script src="${cp}/js/libs/jquery/jquery.min.js"></script>
+        <script src="${cp}/js/formularios/locacao/listagem.js"></script>
     </head>
     <body>
         <h1>Locações</h1>
@@ -55,7 +58,7 @@
                                     Cancelada
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="#" data-id="${locacao.id}" onclick="cancelarVenda(event, '${cp}')">
+                                    <a href="#" data-id="${locacao.id}" onclick="cancelarLocacao(event, '${cp}')">
                                         Cancelar
                                     </a>
                                 </c:otherwise>

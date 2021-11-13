@@ -58,7 +58,7 @@ $( () => {
             
             //se há seleção
         } else if ( confirm( "Deseja remover o(s) item(ns) de locação selecionado(s)?" ) ) {
-            
+
             // itera pela seleção
             for ( let i = 0; i < selecao.length; i++ ) {
                 
@@ -68,8 +68,10 @@ $( () => {
                     let item = itensLocacao[j];
                     
                     // encontrou?
-                    if ( selecao[i] === item.idProduto ) {
-                        $( "#selectItensLocacao" ).index(j).prop('disable', false);
+                    if ( selecao[i] === item.idExemplar ) {
+                        $( "#selectExemplar option[value=" + item.idExemplar + "]" )
+                                .prop('disabled', false);
+                        
                         // remove da posição j
                         itensLocacao.splice( j, 1 );
                         break;
@@ -79,10 +81,10 @@ $( () => {
                 }
                 
             }
-            alert('a');
+
             // remonta a lista
             atualizarGUI();
-            alert('aw');
+            
         }
         
     });
@@ -109,6 +111,18 @@ $( () => {
         if ( event.keyCode === 13 ) {
             event.preventDefault();
         }
+    });
+    
+    // submissão da venda
+    $( "#novaLocacao" ).on( "submit", event => {
+        
+        if ( $( "#selectItensLocacao > option" ).length === 0 ) {
+            alert( "Uma locação precisa conter pelo menos uma mídia!" );
+            return false;
+        }
+        
+        return true;
+        
     });
     
     // constrói as opções do <select> (lista) de itens de locação;
