@@ -14,7 +14,7 @@ function cancelarLocacao( event, cp ) {
         }).then( response => {
             return response.json();
         }).then( data => {
-
+            
             if ( data.status === "ok" ) {
                 event.target.parentElement.innerHTML = "Cancelada";
             } else {

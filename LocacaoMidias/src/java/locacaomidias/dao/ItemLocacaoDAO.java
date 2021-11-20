@@ -2,8 +2,11 @@ package locacaomidias.dao;
 
 import java.math.BigDecimal;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import locacaomidias.entidades.Exemplar;
 import locacaomidias.entidades.ItemLocacao;
 
 /**
@@ -22,8 +25,8 @@ public class ItemLocacaoDAO extends DAO<ItemLocacao>{
                         + "item_locacao(locacao_id, exemplar_codigo_interno, valor) "
               + "VALUES(?, ?, ?);" )){
             
-            stmt.setLong( 1, obj.getIdExemplar().getCodigoInterno() );
-            stmt.setLong( 2, obj.getIdLocacao().getId() );
+            stmt.setLong( 1, obj.getIdLocacao().getId() );
+            stmt.setLong( 2, obj.getIdExemplar().getCodigoInterno() );
             stmt.setBigDecimal( 3, obj.getValor() );
             
             stmt.executeUpdate();
@@ -62,5 +65,50 @@ public class ItemLocacaoDAO extends DAO<ItemLocacao>{
          */
         
         return null;
+    }
+    
+    /**
+     * Obtenção de todas as mídias por um identificador de locação.
+     * Esse método será utilizado para o ajuste das mídias
+     * que forem canceladas. Apenas os valores necessários serão obtidos.
+     */
+    public List<ItemLocacao> obterPorIdLocacao( Long idLocacao ) throws SQLException {
+
+        List<ItemLocacao> itensLocacao = new ArrayList<>();
+
+        PreparedStatement stmt = getConnection().prepareStatement(
+                "SELECT" + 
+                "    e.disponivel exemplarDisponivel, " + 
+                "    e.codigo_interno codigoInterno " +
+                "FROM" +
+                "    item_locacao il, " +
+                "    exemplar e " + 
+                "WHERE " + 
+                "    il.locacao_id = ? AND " + 
+                "    il.exemplar_codigo_interno = e.codigo_interno;" );
+
+        stmt.setLong( 1, idLocacao );
+        
+        ResultSet rs = stmt.executeQuery();
+
+        while ( rs.next() ) {
+
+            ItemLocacao il = new ItemLocacao();
+            Exemplar e = new Exemplar();
+            
+            il.setIdExemplar( e );
+            
+            e.setCodigoInterno( rs.getLong( "codigoInterno" ) );
+            e.setDisponivel( rs.getBoolean( "exemplarDisponivel" ) );
+            
+            itensLocacao.add( il );
+
+        }
+
+        rs.close();
+        stmt.close();
+
+        return itensLocacao;
+
     }
 }

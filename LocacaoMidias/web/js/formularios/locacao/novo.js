@@ -28,19 +28,33 @@ $( () => {
         let titulo = $selectProduto.find( ":selected" ).data( "titulo" );
         
         if ( idExemplar !== null && data !== "" ) {
-            itensLocacao.push({
-                idExemplar: idExemplar,
-                valorAluguel: valorAluguel,
-                titulo: titulo,
-                dataDevolucao: data
+            
+            let existe = null;
+            itensLocacao.some( it => {
+               if( it.titulo === titulo ){
+                   existe = it;
+                   return true;
+               } 
             });
+            
+            if( existe === null ){
+                itensLocacao.push({
+                    idExemplar: idExemplar,
+                    valorAluguel: valorAluguel,
+                    titulo: titulo,
+                    dataDevolucao: data
+                });
+            }else{
+                alert( 'Midia já foi adicionada!' );
+                return false;
+            }
             
             $selectProduto.find( ":selected" ).prop('disabled', true);
             
             atualizarGUI();
             
         } else {
-            alert( "Produto não selecionado!" );
+            alert( "Preencha todos os campos!" );
         }
         
     });
@@ -155,7 +169,7 @@ $( () => {
         });
         
         $( "#divTotal" ).html( "Total: " + fmtMoeda.format( total ) );
-        $( "#hiddenItensVenda" ).val( JSON.stringify( itensLocacao ) );
+        $( "#hiddenItensLocacao" ).val( JSON.stringify( itensLocacao ) );
         
     };
     

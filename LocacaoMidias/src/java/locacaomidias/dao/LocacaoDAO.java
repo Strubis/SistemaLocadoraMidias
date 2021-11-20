@@ -175,7 +175,7 @@ public class LocacaoDAO extends DAO<Locacao>{
                         + "l.id = ? AND "
                         + "l.cliente_id = c.id AND "
                         + "c.cidade_id = ci.id AND "
-                        + "c.estado_id = e.id;" )){
+                        + "ci.estado_id = e.id;" )){
             stmt.setLong( 1, id );
             
             ResultSet rs = stmt.executeQuery();

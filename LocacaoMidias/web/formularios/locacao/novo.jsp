@@ -20,6 +20,7 @@
         <form id="novaLocacao" method="POST" action="${cp}/processaLocacao">
 
             <input name="acao" type="hidden" value="inserir"/>
+            <input id="hiddenItensLocacao" name="itensLocacao" type="hidden"/>
 
             <div id="divItensLocacao">
                 <table class="tabelaInserir">
@@ -47,7 +48,7 @@
                                 scope="page" 
                                 class="locacaomidias.servicos.ExemplarServices"/>
                             Exemplar:
-                            <select id="selectExemplar">
+                            <select id="selectExemplar" name="idExemplar">
                                 <c:forEach items="${servicosEx.todos}" var="exemplar">
                                     <c:choose>
                                         <c:when test="${exemplar.disponivel}">

@@ -51,7 +51,7 @@
                                 pattern="dd/MM/yyyy"
                                 value="${locacao.dataFim}"/>
                         </td>
-                        <td>${locacao.cliente.nome} ${locacao.cliente.sobrenome}</td>
+                        <td>${locacao.idCliente.nome} ${locacao.idCliente.sobrenome}</td>
                         <td>
                             <c:choose>
                                 <c:when test="${locacao.cancelada}">
