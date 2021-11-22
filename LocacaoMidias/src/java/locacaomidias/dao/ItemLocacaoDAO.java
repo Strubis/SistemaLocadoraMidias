@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import locacaomidias.entidades.Exemplar;
 import locacaomidias.entidades.ItemLocacao;
+import locacaomidias.entidades.Midia;
 
 /**
  *
@@ -77,37 +78,43 @@ public class ItemLocacaoDAO extends DAO<ItemLocacao>{
         List<ItemLocacao> itensLocacao = new ArrayList<>();
 
         PreparedStatement stmt = getConnection().prepareStatement(
-                "SELECT" + 
-                "    e.disponivel exemplarDisponivel, " + 
-                "    e.codigo_interno codigoInterno " +
-                "FROM" +
-                "    item_locacao il, " +
-                "    exemplar e " + 
+                "SELECT " + 
+                    "e.disponivel exemplarDisponivel, " + 
+                    "e.codigo_interno codigoInterno, " + 
+                    "m.id idMidia " +
+                "FROM " +
+                    "midia m, " +
+                    "item_locacao il, " +
+                    "exemplar e " + 
                 "WHERE " + 
-                "    il.locacao_id = ? AND " + 
-                "    il.exemplar_codigo_interno = e.codigo_interno;" );
-
+                    "il.locacao_id = ? AND " + 
+                    "e.midia_id = m.id AND " +
+                    "il.exemplar_codigo_interno = e.codigo_interno;" );
+        
         stmt.setLong( 1, idLocacao );
         
         ResultSet rs = stmt.executeQuery();
-
+        
         while ( rs.next() ) {
-
             ItemLocacao il = new ItemLocacao();
             Exemplar e = new Exemplar();
-            
+            Midia m = new Midia();
+           
             il.setIdExemplar( e );
             
+            e.setMidia( m );
             e.setCodigoInterno( rs.getLong( "codigoInterno" ) );
             e.setDisponivel( rs.getBoolean( "exemplarDisponivel" ) );
             
+            m.setId( rs.getLong( "idMidia" ) );
+            
             itensLocacao.add( il );
-
+            
         }
 
         rs.close();
         stmt.close();
-
+        
         return itensLocacao;
 
     }

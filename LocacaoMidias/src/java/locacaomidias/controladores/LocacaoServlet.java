@@ -108,10 +108,13 @@ public class LocacaoServlet extends HttpServlet {
             }else if( acao.equals( "cancelar" ) ){
                 Long id = Utils.getLong( request, "id" );
                 
+                // Cancelando a locação
                 Locacao l = daoLocacao.obterPorId( id );
                 l.setCancelada( true );
                 daoLocacao.atualizar( l );
                 
+                // Percorrendo todas as locações cadastradas com o id, para
+                // colocar como disponível novamente
                 for (ItemLocacao il : daoItemLocacao.obterPorIdLocacao( id ) ) {
                     Exemplar e = il.getIdExemplar();
                     e.setDisponivel( true );
